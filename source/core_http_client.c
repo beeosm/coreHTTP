@@ -1394,9 +1394,7 @@ static HTTPStatus_t addHeader( HTTPRequestHeaders_t * pRequestHeaders,
             pBufferCur += valueLen;
 
             /* Copy the header end indicator, "\r\n\r\n" into the buffer. */
-            ( void ) strncpy( pBufferCur,
-                              HTTP_HEADER_END_INDICATOR,
-                              HTTP_HEADER_END_INDICATOR_LEN );
+            (void)memcpy(pBufferCur, HTTP_HEADER_END_INDICATOR, HTTP_HEADER_END_INDICATOR_LEN);
 
             /* Update the headers length value only when everything is successful. */
             pRequestHeaders->headersLen = backtrackHeaderLen + toAddLen;
@@ -1435,9 +1433,9 @@ static HTTPStatus_t addRangeHeader( HTTPRequestHeaders_t * pRequestHeaders,
     /* Generate the value data for the Range Request header.*/
 
     /* Write the range value prefix in the buffer. */
-    ( void ) strncpy( rangeValueBuffer,
-                      HTTP_RANGE_REQUEST_HEADER_VALUE_PREFIX,
-                      HTTP_RANGE_REQUEST_HEADER_VALUE_PREFIX_LEN );
+    (void)memcpy(rangeValueBuffer,
+                 HTTP_RANGE_REQUEST_HEADER_VALUE_PREFIX,
+                 HTTP_RANGE_REQUEST_HEADER_VALUE_PREFIX_LEN);
     rangeValueLength += HTTP_RANGE_REQUEST_HEADER_VALUE_PREFIX_LEN;
 
     /* Write the range start value in the buffer. */
@@ -1543,9 +1541,7 @@ static HTTPStatus_t writeRequestLine( HTTPRequestHeaders_t * pRequestHeaders,
                           HTTP_PROTOCOL_VERSION_LEN );
         pBufferCur += HTTP_PROTOCOL_VERSION_LEN;
 
-        ( void ) strncpy( pBufferCur,
-                          HTTP_HEADER_LINE_SEPARATOR,
-                          HTTP_HEADER_LINE_SEPARATOR_LEN );
+        (void)memcpy(pBufferCur, HTTP_HEADER_LINE_SEPARATOR, HTTP_HEADER_LINE_SEPARATOR_LEN);
         pRequestHeaders->headersLen = toAddLen;
     }
 

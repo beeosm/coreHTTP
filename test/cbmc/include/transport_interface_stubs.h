@@ -46,7 +46,7 @@
  *
  * @return The number of bytes sent or a negative error code.
  */
-int32_t TransportInterfaceSendStub( NetworkContext_t * pNetworkContext,
+int32_t TransportInterfaceSendStub( void * pNetworkContext,
                                     void * pBuffer,
                                     size_t bytesToSend );
 
@@ -59,7 +59,7 @@ int32_t TransportInterfaceSendStub( NetworkContext_t * pNetworkContext,
  *
  * @return The number of bytes received or a negative error code.
  */
-int32_t TransportInterfaceReceiveStub( NetworkContext_t * pNetworkContext,
+int32_t TransportInterfaceReceiveStub( void * pNetworkContext,
                                        void * pBuffer,
                                        size_t bytesToRecv );
 

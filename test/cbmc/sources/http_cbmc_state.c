@@ -181,7 +181,7 @@ TransportInterface_t * allocateTransportInterface( TransportInterface_t * pTrans
 
     if( pTransport != NULL )
     {
-        pTransport->pNetworkContext = mallocCanFail( sizeof( NetworkContext_t ) );
+        pTransport->pNetworkContext = mallocCanFail( sizeof( void * ) );
     }
 
     return pTransport;

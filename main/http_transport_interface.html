@@ -107,22 +107,21 @@ Transport Interface Overview</h1>
 </p>
 <p>The functions that must be implemented are:<br  />
 </p><ul>
-<li><a class="el" href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">Transport Receive</a></li>
-<li><a class="el" href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">Transport Send</a></li>
+<li><a class="el" href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">Transport Receive</a></li>
+<li><a class="el" href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">Transport Send</a></li>
 </ul>
 <p>Each of the functions above take in an opaque context <a class="el" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a>. The functions above and the context are also grouped together in the <a class="el" href="struct_transport_interface__t.html">TransportInterface_t</a> structure:<br  />
 <br  />
  </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>TransportInterface</div>
 <div class="line">{</div>
-<div class="line">    <a class="code hl_typedef" href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">TransportRecv_t</a> recv;               </div>
-<div class="line">    <a class="code hl_typedef" href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">TransportSend_t</a> send;               </div>
+<div class="line">    <a class="code hl_typedef" href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">TransportRecv_t</a> recv;               </div>
+<div class="line">    <a class="code hl_typedef" href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">TransportSend_t</a> send;               </div>
 <div class="line">    <a class="code hl_typedef" href="group__http__callback__types.html#ga47e779557b0c2db95949ef9526861dfb">TransportWritev_t</a> writev;           </div>
-<div class="line">    <a class="code hl_typedef" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> * pNetworkContext; </div>
+<div class="line">    <span class="keywordtype">void</span> * pNetworkContext; </div>
 <div class="line">} <a class="code hl_struct" href="struct_transport_interface__t.html">TransportInterface_t</a>;</div>
-<div class="ttc" id="agroup__http__callback__types_html_ga227df31d6daf07e5d833537c12130167"><div class="ttname"><a href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">TransportRecv_t</a></div><div class="ttdeci">int32_t(* TransportRecv_t)(NetworkContext_t *pNetworkContext, void *pBuffer, size_t bytesToRecv)</div><div class="ttdoc">Transport interface for receiving data on the network.</div><div class="ttdef"><b>Definition:</b> transport_interface.h:218</div></div>
-<div class="ttc" id="agroup__http__callback__types_html_ga2a39853ff952edd715ab07b33ab2a7c5"><div class="ttname"><a href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">TransportSend_t</a></div><div class="ttdeci">int32_t(* TransportSend_t)(NetworkContext_t *pNetworkContext, const void *pBuffer, size_t bytesToSend)</div><div class="ttdoc">Transport interface for sending data over the network.</div><div class="ttdef"><b>Definition:</b> transport_interface.h:240</div></div>
 <div class="ttc" id="agroup__http__callback__types_html_ga47e779557b0c2db95949ef9526861dfb"><div class="ttname"><a href="group__http__callback__types.html#ga47e779557b0c2db95949ef9526861dfb">TransportWritev_t</a></div><div class="ttdeci">int32_t(* TransportWritev_t)(NetworkContext_t *pNetworkContext, TransportOutVector_t *pIoVec, size_t ioVecCount)</div><div class="ttdoc">Transport interface function for &quot;vectored&quot; / scatter-gather based writes. This function is expected ...</div><div class="ttdef"><b>Definition:</b> transport_interface.h:288</div></div>
-<div class="ttc" id="agroup__http__struct__types_html_ga7769e434e7811caed8cd6fd7f9ec26ec"><div class="ttname"><a href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a></div><div class="ttdeci">struct NetworkContext NetworkContext_t</div><div class="ttdoc">The NetworkContext is an incomplete type. An implementation of this interface must define struct Netw...</div><div class="ttdef"><b>Definition:</b> transport_interface.h:191</div></div>
+<div class="ttc" id="agroup__http__callback__types_html_gaf6c5882668510c491735bdd3504a4a78"><div class="ttname"><a href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">TransportRecv_t</a></div><div class="ttdeci">int32_t(* TransportRecv_t)(void *pNetworkContext, void *pBuffer, size_t bytesToRecv)</div><div class="ttdoc">Transport interface for receiving data on the network.</div><div class="ttdef"><b>Definition:</b> transport_interface.h:218</div></div>
+<div class="ttc" id="agroup__http__callback__types_html_gaf8bd1eb4988f6d35061a9c8c721f96bf"><div class="ttname"><a href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">TransportSend_t</a></div><div class="ttdeci">int32_t(* TransportSend_t)(void *pNetworkContext, const void *pBuffer, size_t bytesToSend)</div><div class="ttdoc">Transport interface for sending data over the network.</div><div class="ttdef"><b>Definition:</b> transport_interface.h:240</div></div>
 <div class="ttc" id="astruct_transport_interface__t_html"><div class="ttname"><a href="struct_transport_interface__t.html">TransportInterface_t</a></div><div class="ttdoc">The transport layer interface.</div><div class="ttdef"><b>Definition:</b> transport_interface.h:299</div></div>
 </div><!-- fragment --><p> <br  />
 </p>
@@ -134,8 +133,9 @@ Implementing the Transport Interface</h1>
 </a><br  />
  <div class="fragment"><div class="line"><span class="keyword">struct </span>NetworkContext;</div>
 <div class="line"><span class="keyword">typedef</span> <span class="keyword">struct </span>NetworkContext <a class="code hl_typedef" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a>;</div>
+<div class="ttc" id="agroup__http__struct__types_html_ga7769e434e7811caed8cd6fd7f9ec26ec"><div class="ttname"><a href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a></div><div class="ttdeci">struct NetworkContext NetworkContext_t</div><div class="ttdoc">The NetworkContext is an incomplete type. An implementation of this interface must define struct Netw...</div><div class="ttdef"><b>Definition:</b> transport_interface.h:191</div></div>
 </div><!-- fragment --> <br  />
- <a class="el" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> is the incomplete type <b>struct NetworkContext</b>. The implemented struct NetworkContext must contain all of the information that is needed to receive and send data with the <a class="el" href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">TransportRecv_t</a> and the <a class="el" href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">TransportSend_t</a> implementations.<br  />
+ <a class="el" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> is the incomplete type <b>struct NetworkContext</b>. The implemented struct NetworkContext must contain all of the information that is needed to receive and send data with the <a class="el" href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">TransportRecv_t</a> and the <a class="el" href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">TransportSend_t</a> implementations.<br  />
  In the case of TLS over TCP, struct NetworkContext is typically implemented with the TCP socket context and a TLS context.<br  />
 <br  />
  <b>Example code:</b> <div class="fragment"><div class="line"><span class="keyword">struct </span>NetworkContext</div>
@@ -145,13 +145,13 @@ Implementing the Transport Interface</h1>
 <div class="line">};</div>
 </div><!-- fragment --> <br  />
 </li>
-<li>Implementing <a class="el" href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">TransportRecv_t<br  />
+<li>Implementing <a class="el" href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">TransportRecv_t<br  />
 </a><br  />
- <div class="fragment"><div class="line"><span class="keyword">typedef</span> int32_t ( * <a class="code hl_typedef" href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">TransportRecv_t</a> )( <a class="code hl_typedef" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> * pNetworkContext,</div>
+ <div class="fragment"><div class="line"><span class="keyword">typedef</span> int32_t ( * <a class="code hl_typedef" href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">TransportRecv_t</a> )( <span class="keywordtype">void</span> * pNetworkContext,</div>
 <div class="line">                                       <span class="keywordtype">void</span> * pBuffer,</div>
 <div class="line">                                       <span class="keywordtype">size_t</span> bytesToRecv );</div>
 </div><!-- fragment --> <br  />
- This function is expected to populate a buffer, with bytes received from the transport, and return the number of bytes placed in the buffer. In the case of TLS over TCP, <a class="el" href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">TransportRecv_t</a> is typically implemented by calling the TLS layer function to receive data. In case of plaintext TCP without TLS, it is typically implemented by calling the TCP layer receive function. <a class="el" href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">TransportRecv_t</a> may be invoked multiple times by the protocol library, if fewer bytes than were requested to receive are returned. <br  />
+ This function is expected to populate a buffer, with bytes received from the transport, and return the number of bytes placed in the buffer. In the case of TLS over TCP, <a class="el" href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">TransportRecv_t</a> is typically implemented by calling the TLS layer function to receive data. In case of plaintext TCP without TLS, it is typically implemented by calling the TCP layer receive function. <a class="el" href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">TransportRecv_t</a> may be invoked multiple times by the protocol library, if fewer bytes than were requested to receive are returned. <br  />
 <br  />
  <b>Example code:</b> <div class="fragment"><div class="line">int32_t myNetworkRecvImplementation( <a class="code hl_typedef" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> * pNetworkContext,</div>
 <div class="line">                                     <span class="keywordtype">void</span> * pBuffer,</div>
@@ -193,13 +193,13 @@ Implementing the Transport Interface</h1>
 <div class="line">}</div>
 </div><!-- fragment --> <br  />
 </li>
-<li>Implementing <a class="el" href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">TransportSend_t<br  />
+<li>Implementing <a class="el" href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">TransportSend_t<br  />
 </a><br  />
- <div class="fragment"><div class="line"><span class="keyword">typedef</span> int32_t ( * <a class="code hl_typedef" href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">TransportSend_t</a> )( <a class="code hl_typedef" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> * pNetworkContext,</div>
+ <div class="fragment"><div class="line"><span class="keyword">typedef</span> int32_t ( * <a class="code hl_typedef" href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">TransportSend_t</a> )( <span class="keywordtype">void</span> * pNetworkContext,</div>
 <div class="line">                                       <span class="keyword">const</span> <span class="keywordtype">void</span> * pBuffer,</div>
 <div class="line">                                       <span class="keywordtype">size_t</span> bytesToSend );</div>
 </div><!-- fragment --> <br  />
- This function is expected to send the bytes, in the given buffer over the transport, and return the number of bytes sent. In the case of TLS over TCP, <a class="el" href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">TransportSend_t</a> is typically implemented by calling the TLS layer function to send data. In case of plaintext TCP without TLS, it is typically implemented by calling the TCP layer send function. <a class="el" href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">TransportSend_t</a> may be invoked multiple times by the protocol library, if fewer bytes than were requested to send are returned. <br  />
+ This function is expected to send the bytes, in the given buffer over the transport, and return the number of bytes sent. In the case of TLS over TCP, <a class="el" href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">TransportSend_t</a> is typically implemented by calling the TLS layer function to send data. In case of plaintext TCP without TLS, it is typically implemented by calling the TCP layer send function. <a class="el" href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">TransportSend_t</a> may be invoked multiple times by the protocol library, if fewer bytes than were requested to send are returned. <br  />
 <br  />
  <b>Example code:</b> <div class="fragment"><div class="line">int32_t myNetworkSendImplementation( <a class="code hl_typedef" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> * pNetworkContext,</div>
 <div class="line">                                     <span class="keyword">const</span> <span class="keywordtype">void</span> * pBuffer,</div>

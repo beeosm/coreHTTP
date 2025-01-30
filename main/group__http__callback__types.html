@@ -111,12 +111,12 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga32d6894c1c9d62568136203b57c6d796"><td class="memItemLeft" align="right" valign="top">typedef uint32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__http__callback__types.html#ga32d6894c1c9d62568136203b57c6d796">HTTPClient_GetCurrentTimeFunc_t</a>) (void)</td></tr>
 <tr class="memdesc:ga32d6894c1c9d62568136203b57c6d796"><td class="mdescLeft">&#160;</td><td class="mdescRight">Application provided function to query the current time in milliseconds.  <br /></td></tr>
 <tr class="separator:ga32d6894c1c9d62568136203b57c6d796"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga227df31d6daf07e5d833537c12130167"><td class="memItemLeft" align="right" valign="top">typedef int32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__http__callback__types.html#ga227df31d6daf07e5d833537c12130167">TransportRecv_t</a>) (<a class="el" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> *pNetworkContext, void *pBuffer, size_t bytesToRecv)</td></tr>
-<tr class="memdesc:ga227df31d6daf07e5d833537c12130167"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transport interface for receiving data on the network.  <br /></td></tr>
-<tr class="separator:ga227df31d6daf07e5d833537c12130167"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a39853ff952edd715ab07b33ab2a7c5"><td class="memItemLeft" align="right" valign="top">typedef int32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__http__callback__types.html#ga2a39853ff952edd715ab07b33ab2a7c5">TransportSend_t</a>) (<a class="el" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> *pNetworkContext, const void *pBuffer, size_t bytesToSend)</td></tr>
-<tr class="memdesc:ga2a39853ff952edd715ab07b33ab2a7c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transport interface for sending data over the network.  <br /></td></tr>
-<tr class="separator:ga2a39853ff952edd715ab07b33ab2a7c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6c5882668510c491735bdd3504a4a78"><td class="memItemLeft" align="right" valign="top">typedef int32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__http__callback__types.html#gaf6c5882668510c491735bdd3504a4a78">TransportRecv_t</a>) (void *pNetworkContext, void *pBuffer, size_t bytesToRecv)</td></tr>
+<tr class="memdesc:gaf6c5882668510c491735bdd3504a4a78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transport interface for receiving data on the network.  <br /></td></tr>
+<tr class="separator:gaf6c5882668510c491735bdd3504a4a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8bd1eb4988f6d35061a9c8c721f96bf"><td class="memItemLeft" align="right" valign="top">typedef int32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__http__callback__types.html#gaf8bd1eb4988f6d35061a9c8c721f96bf">TransportSend_t</a>) (void *pNetworkContext, const void *pBuffer, size_t bytesToSend)</td></tr>
+<tr class="memdesc:gaf8bd1eb4988f6d35061a9c8c721f96bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transport interface for sending data over the network.  <br /></td></tr>
+<tr class="separator:gaf8bd1eb4988f6d35061a9c8c721f96bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga47e779557b0c2db95949ef9526861dfb"><td class="memItemLeft" align="right" valign="top">typedef int32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__http__callback__types.html#ga47e779557b0c2db95949ef9526861dfb">TransportWritev_t</a>) (<a class="el" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> *pNetworkContext, <a class="el" href="struct_transport_out_vector__t.html">TransportOutVector_t</a> *pIoVec, size_t ioVecCount)</td></tr>
 <tr class="memdesc:ga47e779557b0c2db95949ef9526861dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transport interface function for "vectored" / scatter-gather based writes. This function is expected to iterate over the list of vectors pIoVec having ioVecCount entries containing portions of one MQTT message at a maximum. If the proper functionality is available, then the data in the list should be copied to the underlying TCP buffer before flushing the buffer. Implementing it in this fashion will lead to sending of fewer TCP packets for all the values in the list.  <br /></td></tr>
 <tr class="separator:ga47e779557b0c2db95949ef9526861dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,14 +141,14 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a id="ga227df31d6daf07e5d833537c12130167" name="ga227df31d6daf07e5d833537c12130167"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga227df31d6daf07e5d833537c12130167">&#9670;&#160;</a></span>TransportRecv_t</h2>
+<a id="gaf6c5882668510c491735bdd3504a4a78" name="gaf6c5882668510c491735bdd3504a4a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf6c5882668510c491735bdd3504a4a78">&#9670;&#160;</a></span>TransportRecv_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int32_t(* TransportRecv_t) (<a class="el" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> *pNetworkContext, void *pBuffer, size_t bytesToRecv)</td>
+          <td class="memname">typedef int32_t(* TransportRecv_t) (void *pNetworkContext, void *pBuffer, size_t bytesToRecv)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -168,14 +168,14 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a id="ga2a39853ff952edd715ab07b33ab2a7c5" name="ga2a39853ff952edd715ab07b33ab2a7c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2a39853ff952edd715ab07b33ab2a7c5">&#9670;&#160;</a></span>TransportSend_t</h2>
+<a id="gaf8bd1eb4988f6d35061a9c8c721f96bf" name="gaf8bd1eb4988f6d35061a9c8c721f96bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf8bd1eb4988f6d35061a9c8c721f96bf">&#9670;&#160;</a></span>TransportSend_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int32_t(* TransportSend_t) (<a class="el" href="group__http__struct__types.html#ga7769e434e7811caed8cd6fd7f9ec26ec">NetworkContext_t</a> *pNetworkContext, const void *pBuffer, size_t bytesToSend)</td>
+          <td class="memname">typedef int32_t(* TransportSend_t) (void *pNetworkContext, const void *pBuffer, size_t bytesToSend)</td>
         </tr>
       </table>
 </div><div class="memdoc">
